@@ -1,4 +1,17 @@
 package fr.univavignon.pokedex.api;
 
-public interface IPokemonFactoryTest {
+import org.junit.Before;
+import org.junit.jupiter.api.BeforeAll;
+import org.mockito.Mock;
+
+public class  IPokemonFactoryTest {
+
+    @Mock
+    private static IPokemonFactory iPokemonFactory;
+
+    @Before
+    public void setUp(){
+
+    }
+
 }
