@@ -5,6 +5,7 @@ jobs:
     docker:
       - image: circleci/openjdk:17-ea-buster-node-browsers-legacy  # Utilisation de l'image Docker avec Java 17
 
+
     steps:
       - checkout  # Récupère le code source du dépôt
 

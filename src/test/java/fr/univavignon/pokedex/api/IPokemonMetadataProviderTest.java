@@ -1,5 +1,6 @@
 package fr.univavignon.pokedex.api;
 
+import org.junit.Before;
 import org.junit.Test;
 import org.junit.jupiter.api.BeforeAll;
 import org.mockito.Mock;
@@ -11,8 +12,8 @@ public class IPokemonMetadataProviderTest {
     @Mock
     private static PokemonMetadata pokemonMetadata;
 
-    @BeforeAll
-    public static void setUp(){
+    @Before
+    public void setUp(){
         pokemonMetadata = new PokemonMetadata(1,"slafleche",999,1,543);
     }
 
