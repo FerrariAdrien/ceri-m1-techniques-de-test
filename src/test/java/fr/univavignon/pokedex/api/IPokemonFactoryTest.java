@@ -43,6 +43,6 @@ public class  IPokemonFactoryTest {
 
     @Test
     public void testGetIv(){
-        assertEquals(iPokemonFactory.createPokemon(1, 100, 100, 100, 100).getIv(), 100);
+        assertEquals(iPokemonFactory.createPokemon(1, 100, 100, 100, 100).getIv(), 100,0.01);
     }
 }
