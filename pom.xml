@@ -46,8 +46,9 @@
                 <artifactId>maven-surefire-plugin</artifactId>
                 <version>3.0.0-M5</version>
                 <configuration>
-                    <!-- Spécifiez le répertoire contenant vos tests unitaires -->
-                    <testSourceDirectory>**/src/test/java/fr/univavignon/pokedex/api**/*.java</testSourceDirectory>
+                    <includes>
+                        <include>**/fr/univavignon/pokedex/api/**/*.java</include>
+                    </includes>
                 </configuration>
             </plugin>
         </plugins>
