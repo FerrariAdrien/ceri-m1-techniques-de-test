@@ -14,7 +14,7 @@ jobs:
       # Exécution des tests unitaires avec Maven
       - run:
           name: Run Unit Tests
-          command: mvn test -X
+          command: mvn test
 
 workflows:
   version: 2
