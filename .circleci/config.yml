@@ -2,6 +2,7 @@ version: 2.1
 
 orbs:
   maven: circleci/maven@1.4.1
+  codecov: codecov/codecov@4.0.1
 
 jobs:
   build:
@@ -18,6 +19,10 @@ jobs:
 
 workflows:
   version: 2
+  upload-to-codecov:
+    jobs:
+      - checkout
+      - codecov/upload
   maven_test:
     jobs:
       - build:
