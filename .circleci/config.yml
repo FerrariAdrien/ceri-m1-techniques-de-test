@@ -21,7 +21,7 @@ workflows: # Définition des workflows
   version: 2
   upload-to-codecov:
     jobs:
-      - checkout
+      - build
       - codecov/upload
   maven_test:
     jobs:
