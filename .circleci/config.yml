@@ -16,7 +16,8 @@ jobs:
       - run:
           name: Run Unit Tests
           command: mvn test
-
+      - codecov/upload:
+          file: target/site/jacoco/jacoco.xml  # Spécification du fichier de couverture de code
 workflows: # Définition des workflows
   version: 2
   upload-to-codecov:
