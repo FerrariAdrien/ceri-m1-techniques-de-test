@@ -17,7 +17,7 @@ jobs:
           name: Run Unit Tests
           command: mvn test
 
-workflows:   # Définition des workflows
+workflows:
   version: 2
   upload-to-codecov:
     jobs:
