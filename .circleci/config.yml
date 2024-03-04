@@ -16,8 +16,13 @@ jobs:
       - run:
           name: Run Unit Tests
           command: mvn test
-      - codecov/upload:
-          file: target/site/jacoco/jacoco.xml  # Spécification du fichier de couverture de code
+      - run:
+          name: Generate Coverage Report
+          command: mvn jacoco:report
+      - run:
+          name: Upload Coverage Report
+          command: bash <(curl -s https://codecov.io/bash)
+
 workflows: # Définition des workflows
   version: 2
   upload-to-codecov:
