@@ -78,4 +78,19 @@ public class IPokedexTest {
         iPokedex.getPokemon(10);
     }
 
+    @Test
+    public void testGetPokemonsReturnsCorrectList() {
+        List<Pokemon> expectedPokemons = new ArrayList<>();
+        expectedPokemons.add(pokemon);
+        expectedPokemons.add(pokemon2);
+        assertEquals(expectedPokemons, iPokedex.getPokemons());
+    }
+
+    @Test
+    public void testAddPokemonReturnsCorrectIndex() {
+        Pokemon newPokemon = new Pokemon(3, "Venusaur", 100, 100, 100, 100, 100, 100, 100, 100);
+        int index = iPokedex.addPokemon(newPokemon);
+        assertEquals(2, index);
+    }
+
 }
