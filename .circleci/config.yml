@@ -15,7 +15,7 @@ jobs:
       # Exécution des tests unitaires avec Maven
       - run:
           name: Run Unit Tests
-          command: mvn test
+          command: mvn test -X
       - run:
           name: Generate Coverage Report
           command: mvn jacoco:report
