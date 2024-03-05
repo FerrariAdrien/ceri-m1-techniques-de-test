@@ -13,19 +13,24 @@ import static org.mockito.Mockito.when;
 
 public class IPokedexTest {
 
-    @Mock
-    private static IPokedex iPokedex;
-
+    //@Mock
+    //private static IPokedex iPokedex;
+    private static Pokedex iPokedex;
     private Pokemon pokemon;
     @Before
     public void setUp() throws PokedexException {
-        iPokedex = mock(IPokedex.class);
+//        iPokedex = mock(IPokedex.class);
+//        pokemon = new Pokemon(1, "Bulbasaur", 100, 100, 100, 100, 100, 100, 100, 100);
+//        when(iPokedex.addPokemon(any(Pokemon.class))).thenReturn(pokemon.getIndex());
+//        when(iPokedex.getPokemon(1)).thenReturn(pokemon);
+//        when(iPokedex.size()).thenReturn(5);
+//        when(iPokedex.getPokemons()).thenReturn(new ArrayList<Pokemon>());
+//        when(iPokedex.getPokemons(null)).thenReturn(new ArrayList<Pokemon>());
+        iPokedex = new Pokedex();
         pokemon = new Pokemon(1, "Bulbasaur", 100, 100, 100, 100, 100, 100, 100, 100);
-        when(iPokedex.addPokemon(any(Pokemon.class))).thenReturn(pokemon.getIndex());
-        when(iPokedex.getPokemon(1)).thenReturn(pokemon);
-        when(iPokedex.size()).thenReturn(5);
-        when(iPokedex.getPokemons()).thenReturn(new ArrayList<Pokemon>());
-        when(iPokedex.getPokemons(null)).thenReturn(new ArrayList<Pokemon>());
+        iPokedex.addPokemon(pokemon);
+
+
     }
 
     @Test

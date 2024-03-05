@@ -11,7 +11,9 @@ jobs:
 
     steps:
       - checkout  # Récupère le code source du dépôt
-
+      - run:
+          name: Run Checkstyle
+          command: mvn checkstyle:check
       # Exécution des tests unitaires avec Maven
       - run:
           name: Run Unit Tests
