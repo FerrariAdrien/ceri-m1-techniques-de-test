@@ -1,5 +1,6 @@
 package fr.univavignon.pokedex.api;
 
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.mockito.Mock;
@@ -79,18 +80,29 @@ public class IPokedexTest {
     }
 
     @Test
-    public void testGetPokemonsReturnsCorrectList() {
-        List<Pokemon> expectedPokemons = new ArrayList<>();
-        expectedPokemons.add(pokemon);
-        expectedPokemons.add(pokemon2);
-        assertEquals(expectedPokemons, iPokedex.getPokemons());
+    public void testCreatePokemon() throws PokedexException {
+        Pokedex pokedex = new Pokedex();
+        Pokemon createdPokemon = pokedex.createPokemon(1, 100, 100, 100, 100);
+
+        Assert.assertEquals(1, createdPokemon.getIndex());
+        Assert.assertEquals(100, createdPokemon.getCp());
+        Assert.assertEquals(100, createdPokemon.getHp());
+        Assert.assertEquals(100, createdPokemon.getDust());
+        Assert.assertEquals(100, createdPokemon.getCandy());
+    }
+    @Test
+    public void testGetPokemonMetadata() throws PokedexException {
+        Pokedex pokedex = new Pokedex();
+        Pokemon createdPokemon = pokedex.createPokemon(1, 100, 100, 100, 100);
+        PokemonMetadata metadata = pokedex.getPokemonMetadata(1);
+
+        Assert.assertEquals(createdPokemon.getIndex(), metadata.getIndex());
+        Assert.assertEquals(createdPokemon.getName(), metadata.getName());
+        Assert.assertEquals(createdPokemon.getAttack(), metadata.getAttack());
+        Assert.assertEquals(createdPokemon.getDefense(), metadata.getDefense());
+        Assert.assertEquals(createdPokemon.getStamina(), metadata.getStamina());
     }
 
-    @Test
-    public void testAddPokemonReturnsCorrectIndex() {
-        Pokemon newPokemon = new Pokemon(3, "Venusaur", 100, 100, 100, 100, 100, 100, 100, 100);
-        int index = iPokedex.addPokemon(newPokemon);
-        assertEquals(2, index);
-    }
+
 
 }

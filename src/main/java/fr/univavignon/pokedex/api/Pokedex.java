@@ -8,6 +8,8 @@ import java.util.List;
 public class Pokedex implements IPokedex{
 
 
+
+
     Pokedex(){
         pokemons = new ArrayList<>();
     }
@@ -55,12 +57,22 @@ public class Pokedex implements IPokedex{
 
 
     @Override
-    public Pokemon createPokemon(int index, int cp, int hp, int dust, int candy) {
-        return null;
+    public Pokemon createPokemon(int index, int cp, int hp, int dust, int candy) throws PokedexException {
+        PokemonMetadata pokemonMetadata = getPokemonMetadata(index);
+        if(pokemonMetadata == null)
+            throw new PokedexException("Invalid index");
+        pokemons.add(new  Pokemon(index, pokemonMetadata.getName(), pokemonMetadata.getAttack(), pokemonMetadata.getDefense(), pokemonMetadata.getStamina(),cp,hp,dust, candy,5));
+        return pokemons.get(pokemons.size() - 1);
+
+
     }
 
     @Override
     public PokemonMetadata getPokemonMetadata(int index) throws PokedexException {
+        for(int i = 0; i < pokemons.size(); i++){
+            if(pokemons.get(i).getIndex() == index)
+                return new PokemonMetadata(index, pokemons.get(i).getName(), pokemons.get(i).getAttack(),pokemons.get(i).getDefense(), pokemons.get(i).getStamina());
+        }
         return null;
     }
 }
