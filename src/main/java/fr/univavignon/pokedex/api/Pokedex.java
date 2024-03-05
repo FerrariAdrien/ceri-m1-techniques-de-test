@@ -20,7 +20,9 @@ public class Pokedex implements IPokedex{
 
     @Override
     public int addPokemon(Pokemon pokemon) {
+
         pokemons.add(pokemon);
+        System.out.println(pokemons.size() -1);
         return pokemons.size() - 1;
     }
 
