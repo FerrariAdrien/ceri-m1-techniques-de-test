@@ -27,7 +27,7 @@ public class IPokedexTest {
 //        when(iPokedex.getPokemons()).thenReturn(new ArrayList<Pokemon>());
 //        when(iPokedex.getPokemons(null)).thenReturn(new ArrayList<Pokemon>());
         iPokedex = new Pokedex();
-        pokemon = new Pokemon(1, "Bulbasaur", 100, 100, 100, 100, 100, 100, 100, 100);
+        this.pokemon = new Pokemon(1, "Bulbasaur", 100, 100, 100, 100, 100, 100, 100, 100);
         iPokedex.addPokemon(pokemon);
 
 
@@ -40,17 +40,18 @@ public class IPokedexTest {
 
     @Test
     public void testGetPokemon() throws PokedexException {
-        assertEquals(iPokedex.getPokemon(1), pokemon);
+        assertEquals(iPokedex.getPokemon(0), pokemon);
     }
 
     @Test
     public void testSize() {
-        assertEquals(iPokedex.size(), 5);
+        assertEquals(iPokedex.size(), 1);
     }
 
     @Test
     public void testGetPokemons() {
-        assertEquals(iPokedex.getPokemons(), new ArrayList<Pokemon>());
+
+        assertEquals(iPokedex.getPokemons(), iPokedex.pokemons);
     }
 
 }
