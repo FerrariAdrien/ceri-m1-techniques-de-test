@@ -81,10 +81,9 @@ public class IPokedexTest {
 
     @Test
     public void testCreatePokemon() throws PokedexException {
-        Pokedex pokedex = new Pokedex();
-        Pokemon createdPokemon = pokedex.createPokemon(1, 100, 100, 100, 100);
+        Pokemon createdPokemon = iPokedex.createPokemon(2, 100, 100, 100, 100);
 
-        Assert.assertEquals(1, createdPokemon.getIndex());
+        Assert.assertEquals(2, createdPokemon.getIndex());
         Assert.assertEquals(100, createdPokemon.getCp());
         Assert.assertEquals(100, createdPokemon.getHp());
         Assert.assertEquals(100, createdPokemon.getDust());
@@ -92,9 +91,9 @@ public class IPokedexTest {
     }
     @Test
     public void testGetPokemonMetadata() throws PokedexException {
-        Pokedex pokedex = new Pokedex();
-        Pokemon createdPokemon = pokedex.createPokemon(1, 100, 100, 100, 100);
-        PokemonMetadata metadata = pokedex.getPokemonMetadata(1);
+
+        Pokemon createdPokemon = iPokedex.createPokemon(2, 100, 100, 100, 100);
+        PokemonMetadata metadata = iPokedex.getPokemonMetadata(2);
 
         Assert.assertEquals(createdPokemon.getIndex(), metadata.getIndex());
         Assert.assertEquals(createdPokemon.getName(), metadata.getName());
