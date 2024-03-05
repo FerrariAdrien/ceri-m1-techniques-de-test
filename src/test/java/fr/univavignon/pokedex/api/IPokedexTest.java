@@ -5,6 +5,8 @@ import org.junit.Test;
 import org.mockito.Mock;
 
 import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.List;
 
 import static org.junit.Assert.assertEquals;
 import static org.mockito.ArgumentMatchers.any;
@@ -61,6 +63,19 @@ public class IPokedexTest {
 
         assertEquals(iPokedex.getPokemons(), iPokedex.pokemons);
 
+    }
+    @Test
+    public void testGetPokemonsWithOrder() {
+        Comparator<Pokemon> order = Comparator.comparing(Pokemon::getName);
+        List<Pokemon> sortedPokemons = new ArrayList<>();
+        sortedPokemons.add(pokemon);
+        sortedPokemons.add(pokemon2);
+
+        assertEquals(iPokedex.getPokemons(order), sortedPokemons);
+    }
+    @Test(expected = PokedexException.class)
+    public void testGetPokemonWithInvalidId() throws PokedexException {
+        iPokedex.getPokemon(10);
     }
 
 }
