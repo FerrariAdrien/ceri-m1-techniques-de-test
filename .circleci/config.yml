@@ -38,6 +38,9 @@ workflows: # Définition des workflows
   upload-to-codecov:
     jobs:
       - build
+      - filters:
+          branches:
+            only: master
   maven_test:
     jobs:
       - build:
