@@ -22,7 +22,14 @@ jobs:
       - run:
           name: Upload Coverage Report
           command: bash <(curl -s https://codecov.io/bash)
-
+      - run:
+          name: Run checkstyle
+          command: mvn checkstyle:check
+      - run: Deploy checkstyle rapport to gihub
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./target/site
 workflows: # Définition des workflows
   version: 2
   upload-to-codecov:

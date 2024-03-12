@@ -63,8 +63,6 @@ public class Pokedex implements IPokedex{
             throw new PokedexException("Invalid index");
         pokemons.add(new  Pokemon(index, pokemonMetadata.getName(), pokemonMetadata.getAttack(), pokemonMetadata.getDefense(), pokemonMetadata.getStamina(),cp,hp,dust, candy,5));
         return pokemons.get(pokemons.size() - 1);
-
-
     }
 
     @Override
