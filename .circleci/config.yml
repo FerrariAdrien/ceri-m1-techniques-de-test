@@ -32,7 +32,7 @@ jobs:
             git config user.email "circleci@example.com"
             git add target/site
             git commit -m "Deploy Checkstyle report"
-            git push -f https://FerrariAdrien:${{ secrets.GITHUB_TOKEN }}@github.com/FerrariAdrien/ceri-m1-techniques-de-test.git master:gh-pages
+            git push -f https://FerrariAdrien:$GITHUB_TOKEN@github.com/FerrariAdrien/ceri-m1-techniques-de-test.git master:gh-pages
 workflows: # Définition des workflows
   version: 2
   upload-to-codecov:
