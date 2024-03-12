@@ -41,3 +41,4 @@ Ferrari adrien
 groupe : ILSEN ALT
 badge circleCi : [![CircleCI](https://circleci.com/gh/FerrariAdrien/ceri-m1-techniques-de-test.svg?style=svg)](https://circleci.com/gh/FerrariAdrien/ceri-m1-techniques-de-test)
 badge codecove : [![codecov](https://codecov.io/github/FerrariAdrien/ceri-m1-techniques-de-test/graph/badge.svg?token=SXHE2BQSIT)](https://codecov.io/github/FerrariAdrien/ceri-m1-techniques-de-test)
+badge checkstyle : [![CheckStyle]()
