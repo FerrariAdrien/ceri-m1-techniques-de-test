@@ -5,6 +5,9 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 
+/**
+ * This class represents a Pokedex, which is a digital encyclopedia of Pokemon.
+ */
 public class Pokedex implements IPokedex{
 
 
