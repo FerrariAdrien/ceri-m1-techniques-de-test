@@ -24,7 +24,7 @@ jobs:
           command: bash <(curl -s https://codecov.io/bash)
       - run:
           name: Generate Checkstyle report
-          command: mvn checkstyle:checkstyle
+          command: mvn checkstyle:checkstyle -Dcheckstyle.output.format=xml
       - run:
           name: Deploy Checkstyle report to GitHub
           command: |
