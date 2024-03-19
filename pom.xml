@@ -42,6 +42,11 @@
             <artifactId>checkstyle</artifactId>
             <version>10.14.1</version>
         </dependency>
+        <dependency>
+            <groupId>com.github.bordertech.buildtools</groupId>
+            <artifactId>badger</artifactId>
+            <version>1.0.0</version>
+        </dependency>
     </dependencies>
 
     <build>
@@ -73,6 +78,27 @@
                         <goals>
                             <goal>report</goal>
                         </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>com.github.bordertech.buildtools</groupId>
+                <artifactId>badger</artifactId>
+                <version>1.0.0</version>
+                <executions>
+                    <execution>
+                        <phase>compile</phase>
+                        <goals>
+                            <goal>badges</goal>
+                        </goals>
+                        <configuration>
+                            <outputDir>
+                                ${project.build.directory}/generated-resources/badges
+                            </outputDir>
+                            <inputFiles>
+                                <inputFile>${project.build.directory}/target/checkstyle-result.xml</inputFile>
+                            </inputFiles>
+                        </configuration>
                     </execution>
                 </executions>
             </plugin>

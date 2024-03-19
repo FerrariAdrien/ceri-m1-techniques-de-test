@@ -2,7 +2,6 @@ package fr.univavignon.pokedex.api;
 
 import org.junit.Before;
 import org.junit.Test;
-import org.junit.jupiter.api.BeforeAll;
 import org.mockito.Mock;
 
 import static org.junit.Assert.assertEquals;
@@ -16,34 +15,39 @@ public class IPokemonMetadataProviderTest {
 
     @Before
     public void setUp() throws PokedexException {
-        //pokemonMetadata = new PokemonMetadata(1,"slafleche",999,1,543);
+        // Créer un objet PokemonMetadata
+        PokemonMetadata pokemonMetadataMock = new PokemonMetadata(1,"Bulbasaur",49,49,45);
+
+        // Créer un mock de IPokemonMetadataProvider
         pokemonMetadata = mock(IPokemonMetadataProvider.class);
-        when(pokemonMetadata.getPokemonMetadata(1)).thenReturn(new PokemonMetadata(1,"slafleche",999,1,543));
+
+        // Définir le comportement de la méthode getPokemonMetadata
+        when(pokemonMetadata.getPokemonMetadata(1)).thenReturn(pokemonMetadataMock);
     }
 
     @Test
     public void testIndex() throws PokedexException {
-        assertEquals(pokemonMetadata.getPokemonMetadata(1).getIndex(),1);
+        assertEquals(1, pokemonMetadata.getPokemonMetadata(1).getIndex());
     }
 
     @Test
     public void testName() throws PokedexException {
-        assertEquals(pokemonMetadata.getPokemonMetadata(1).getName(),"slafleche");
+        assertEquals("Bulbasaur", pokemonMetadata.getPokemonMetadata(1).getName());
     }
 
     @Test
     public void testAttack() throws PokedexException {
-        assertEquals(pokemonMetadata.getPokemonMetadata(1).getAttack(),999);
+        assertEquals(49, pokemonMetadata.getPokemonMetadata(1).getAttack());
     }
 
     @Test
     public void testDefense() throws PokedexException {
-        assertEquals(pokemonMetadata.getPokemonMetadata(1).getDefense(),1);
+        assertEquals(49, pokemonMetadata.getPokemonMetadata(1).getDefense());
     }
 
     @Test
     public void testStamina() throws PokedexException {
-        assertEquals(pokemonMetadata.getPokemonMetadata(1).getStamina(),543);
+        assertEquals(45, pokemonMetadata.getPokemonMetadata(1).getStamina());
     }
 
 }

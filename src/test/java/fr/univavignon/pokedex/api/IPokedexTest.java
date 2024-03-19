@@ -33,8 +33,32 @@ public class IPokedexTest {
 //        when(iPokedex.getPokemons()).thenReturn(new ArrayList<Pokemon>());
 //        when(iPokedex.getPokemons(null)).thenReturn(new ArrayList<Pokemon>());
         iPokedex = new Pokedex();
-        this.pokemon = new Pokemon(1, "Bulbasaur", 100, 100, 100, 100, 100, 100, 100, 100);
-        this.pokemon2 = new Pokemon(2, "Ivysaur", 100, 100, 100, 100, 100, 100, 100, 100);
+
+        this.pokemon = mock(Pokemon.class);
+        this.pokemon2 = mock(Pokemon.class);
+        when(pokemon.getIndex()).thenReturn(1);
+        when(pokemon.getName()).thenReturn("Bulbasaur");
+        when(pokemon.getAttack()).thenReturn(100);
+        when(pokemon.getDefense()).thenReturn(100);
+        when(pokemon.getStamina()).thenReturn(100);
+        when(pokemon.getCp()).thenReturn(100);
+        when(pokemon.getHp()).thenReturn(100);
+        when(pokemon.getDust()).thenReturn(100);
+        when(pokemon.getCandy()).thenReturn(100);
+        when(pokemon.getIv()).thenReturn(100.0);
+
+        when(pokemon2.getIndex()).thenReturn(2);
+        when(pokemon2.getName()).thenReturn("Ivysaur");
+        when(pokemon2.getAttack()).thenReturn(100);
+        when(pokemon2.getDefense()).thenReturn(100);
+        when(pokemon2.getStamina()).thenReturn(100);
+        when(pokemon2.getCp()).thenReturn(100);
+        when(pokemon2.getHp()).thenReturn(100);
+        when(pokemon2.getDust()).thenReturn(100);
+        when(pokemon2.getCandy()).thenReturn(100);
+        when(pokemon2.getIv()).thenReturn(100.0);
+        //this.pokemon = new Pokemon(1, "Bulbasaur", 100, 100, 100, 100, 100, 100, 100, 100);
+        //this.pokemon2 = new Pokemon(2, "Ivysaur", 100, 100, 100, 100, 100, 100, 100, 100);
         iPokedex.addPokemon(pokemon);
         iPokedex.addPokemon(pokemon2);
 
