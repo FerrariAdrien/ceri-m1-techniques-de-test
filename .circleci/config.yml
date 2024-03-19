@@ -22,17 +22,6 @@ jobs:
       - run:
           name: Upload Coverage Report
           command: bash <(curl -s https://codecov.io/bash)
-      - run:
-          name: Generate Checkstyle report
-          command: mvn checkstyle:checkstyle -Dcheckstyle.output.format=xml
-      - run:
-          name: Deploy Checkstyle report to GitHub
-          command: |
-            git config user.name "CircleCI"
-            git config user.email "circleci@example.com"
-            git add target/site
-            git commit -m "Deploy Checkstyle report"
-            git push -f https://FerrariAdrien:$GITHUB_TOKEN@github.com/FerrariAdrien/ceri-m1-techniques-de-test.git master:gh-pages
 workflows: # Définition des workflows
   version: 2
   upload-to-codecov:
