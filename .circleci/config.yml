@@ -38,6 +38,7 @@ jobs:
             rm -rf *
             git add --all
             git commit -m "Update Javadoc"
+            git remote set-url origin https://x-access-token:${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}@github.com/FerrariAdrien/ceri-m1-techniques-de-test.git  # Remplacez "username" et "repo" par votre nom d'utilisateur GitHub et le nom du dépôt
             git push -f origin gh-pages
 workflows: # Définition des workflows
   version: 2
