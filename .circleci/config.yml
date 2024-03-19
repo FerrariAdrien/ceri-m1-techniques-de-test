@@ -22,6 +22,24 @@ jobs:
       - run:
           name: Upload Coverage Report
           command: bash <(curl -s https://codecov.io/bash)
+
+      # Génération de la Javadoc avec Maven
+      - run:
+          name: Generate Javadoc
+          command: mvn javadoc:javadoc
+
+      # Déploiement de la Javadoc sur GitHub Pages
+      - run:
+          name: Deploy to GitHub Pages
+          command: |
+            git config --global user.email "gadrew157@gmail.com"
+            git config --global user.name "FerrariAdrien"
+            git checkout --orphan gh-pages
+            rm -rf *
+            cp -r target/site/apidocs/* .
+            git add --all
+            git commit -m "Update Javadoc"
+            git push -f origin gh-pages
 workflows: # Définition des workflows
   version: 2
   upload-to-codecov:
