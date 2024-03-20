@@ -38,7 +38,7 @@ jobs:
             rm -rf *
             git add --all
             git commit -m "Update Javadoc"
-            git push -f origin gh-pages
+            git push origin gh-pages
 workflows: # Définition des workflows
   version: 2
   upload-to-codecov:
