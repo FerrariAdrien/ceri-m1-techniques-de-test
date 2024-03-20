@@ -36,6 +36,7 @@ jobs:
             git config --global user.name "FerrariAdrien"
             git checkout gh-pages
             rm -rf *
+            git clean -f -d
             git add target
             git commit -m "Update Javadoc"
             git push origin gh-pages
