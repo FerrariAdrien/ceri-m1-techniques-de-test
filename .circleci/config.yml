@@ -27,23 +27,20 @@ jobs:
       - run:
           name: Generate Javadoc
           command: mvn javadoc:javadoc
-  deploy:
-      docker:
-          - image: circleci/node:10.16.0
+
       # Déploiement de la Javadoc sur GitHub Pages
-      steps:
-          - attach_workspace:
-              at: .
-          - run:
-              name: Install and configure dependencies
-              command: |
-                npm install -g gh-pages
-                git remote set-url origin https://${GITHUB_TOKEN}@github.com/FerrariAdrien/ceri-m1-techniques-de-test.git
-                git config --global user.email "gadrew157@gmail.com"
-                git config --global user.name "FerrariAdrien"
-          - run:
-              name: Deploy to GitHub Pages
-              command: gh-pages -d target/site/apidocs
+      - run:
+          name: Deploy to GitHub Pages
+          command: |
+            git remote set-url origin https://${GH_TOKEN}@github.com/FerrariAdrien/ceri-m1-techniques-de-test.git
+            git config --global user.email "gadrew157@gmail.com"
+            git config --global user.name "FerrariAdrien"
+            git clean -f -d
+            git checkout gh-pages
+            rm -rf *
+            git add target
+            git commit -m "Update Javadoc"
+            git push origin gh-pages
 workflows: # Définition des workflows
   version: 2
 #  upload-to-codecov:
@@ -58,9 +55,3 @@ workflows: # Définition des workflows
           filters:
             branches:
               only: master
-      - deploy:
-            requires:
-              - build
-            filters:
-              branches:
-                only: master
