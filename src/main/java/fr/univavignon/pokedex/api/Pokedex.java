@@ -79,7 +79,7 @@ public class Pokedex implements IPokedex{
     public Pokemon createPokemon(final int index, final int cp, final int hp, final int dust, final int candy) throws PokedexException {
         PokemonMetadata pokemonMetadata = getPokemonMetadata(index);
         if (pokemonMetadata == null || index < 0) {
-            System.out.println("Invalid index");
+            System.out.println("Invalid index ");
             throw new PokedexException("Invalid index");
         }
         this.pokemons.add(new Pokemon(index, pokemonMetadata.getName(), pokemonMetadata.getAttack(), pokemonMetadata.getDefense(), pokemonMetadata.getStamina(), cp, hp, dust, candy, 5));
