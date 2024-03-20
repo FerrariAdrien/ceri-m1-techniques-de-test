@@ -34,20 +34,20 @@ jobs:
           command: |
             git config --global user.email "gadrew157@gmail.com"
             git config --global user.name "FerrariAdrien"
+            git clean -f -d
             git checkout gh-pages
             rm -rf *
-            git clean -f -d
             git add target
             git commit -m "Update Javadoc"
             git push origin gh-pages
 workflows: # Définition des workflows
   version: 2
-  upload-to-codecov:
-    jobs:
-      - build:
-          filters:
-            branches:
-              only: master
+#  upload-to-codecov:
+#    jobs:
+#      - build:
+#          filters:
+#            branches:
+#              only: master
   maven_test:
     jobs:
       - build:
