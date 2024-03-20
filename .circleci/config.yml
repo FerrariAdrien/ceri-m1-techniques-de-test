@@ -27,7 +27,7 @@ jobs:
       - run:
           name: Generate Javadoc
           command: mvn javadoc:javadoc
-    deploy:
+  deploy:
       docker:
           - image: circleci/node:10.16.0
       # Déploiement de la Javadoc sur GitHub Pages
