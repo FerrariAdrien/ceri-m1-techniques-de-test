@@ -10,6 +10,7 @@ import java.util.Comparator;
 import java.util.List;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.fail;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
@@ -124,6 +125,19 @@ public class IPokedexTest {
         Assert.assertEquals(createdPokemon.getAttack(), metadata.getAttack());
         Assert.assertEquals(createdPokemon.getDefense(), metadata.getDefense());
         Assert.assertEquals(createdPokemon.getStamina(), metadata.getStamina());
+    }
+
+    @Test
+    public void testAddPokemonUniqueIndex() throws PokedexException {
+        Pokemon pokemon3 = mock(Pokemon.class);
+        when(pokemon3.getIndex()).thenReturn(3);
+        int index = iPokedex.addPokemon(pokemon3);
+        assertEquals(2, index);
+    }
+
+    @Test(expected = PokedexException.class)
+    public void testGetPokemonInvalidId() throws PokedexException {
+        iPokedex.getPokemon(999);
     }
 
 
