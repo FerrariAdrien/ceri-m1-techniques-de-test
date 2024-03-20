@@ -35,10 +35,8 @@ jobs:
             git remote set-url origin https://${GH_TOKEN}@github.com/FerrariAdrien/ceri-m1-techniques-de-test.git
             git config --global user.email "gadrew157@gmail.com"
             git config --global user.name "FerrariAdrien"
-            git clean -f -d
             git checkout gh-pages
-            rm -rf *
-            git add target
+            git add target/site/apidocs
             git commit -m "Update Javadoc"
             git push origin gh-pages
 workflows: # Définition des workflows
