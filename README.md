@@ -36,6 +36,16 @@ Si vous ne spécifiez pas de tag, le dernier commit à la date-heure de la fin d
 
 [^1]: Si vous n’êtes vraiment pas à l’aise avec cet outil nous vous conseillons quand même vivement de vous y mettre.
 
+
+Le lien vers la javadoc : target/site/testapidocs/index.html
+
+
+Les différents problèmes que la class RocketPokemonFactory peut rencontrer sont les suivants :
+Utilisation inefficace de Random : Dans la méthode generateRandomStat(), un nouvel objet Random est créé à chaque itération de la boucle. Cela peut entraîner une utilisation inefficace des ressources. Il serait préférable de créer une seule instance de Random et de l'utiliser tout au long de la boucle.
+Division par zéro potentielle : Dans la méthode generateRandomStat(), si le total est 0, une exception ArithmeticException sera levée en raison de la division par zéro. Il serait préférable de vérifier si le total est zéro avant de faire la division.
+Gestion des indices de Pokémon non mappés : Dans la méthode createPokemon(), si l'indice du Pokémon n'est pas dans la carte index2name, le nom du Pokémon est défini sur "MISSINGNO". Cela pourrait ne pas être le comportement souhaité. Il serait préférable de gérer ce cas d'une manière qui convient à votre application.
+Statistiques de Pokémon potentiellement faibles : Dans la méthode createPokemon(), si l'indice du Pokémon est supérieur ou égal à 0, les statistiques d'attaque, de défense et d'endurance sont générées aléatoirement. Cela pourrait entraîner des statistiques très faibles pour certains Pokémon. Il serait préférable de mettre en place une logique pour garantir un certain niveau de statistiques pour chaque Pokémon.
+
 ## information de contact
 Ferrari adrien
 groupe : ILSEN ALT
