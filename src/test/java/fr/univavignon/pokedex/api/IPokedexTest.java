@@ -9,8 +9,9 @@ import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.*;
 import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.ArgumentMatchers.anyInt;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
@@ -126,6 +127,41 @@ public class IPokedexTest {
         Assert.assertEquals(createdPokemon.getStamina(), metadata.getStamina());
     }
 
+    @Test
+    public void testAddPokemonUniqueIndex() throws PokedexException {
+        Pokemon pokemon3 = mock(Pokemon.class);
+        when(pokemon3.getIndex()).thenReturn(3);
+        int index = iPokedex.addPokemon(pokemon3);
+        assertEquals(2, index);
+    }
 
+    @Test(expected = PokedexException.class)
+    public void testGetPokemonInvalidId() throws PokedexException {
+        iPokedex.getPokemon(999);
+    }
+
+    @Test
+    public void testCreatePokemonThrowsException() throws PokedexException {
+        // Créer un mock pour PokemonMetadataProvider
+        IPokemonMetadataProvider metadataProvider = mock(IPokemonMetadataProvider.class);
+        Pokedex pokedex1 = new Pokedex();
+        // Configurer le mock pour retourner null lorsque getPokemonMetadata est appelé avec un index invalide
+        when(metadataProvider.getPokemonMetadata(anyInt())).thenReturn(null);
+
+        // Appeler la méthode createPokemon avec un index invalide et vérifier qu'une PokedexException est lancée
+        assertThrows(PokedexException.class, () -> pokedex1.createPokemon(-1, 100, 100, 100, 100));
+    }
+    @Test
+    public void testCreatePokemonWithNullMetadata() throws PokedexException {
+        // Créer un mock pour IPokemonMetadataProvider
+        IPokemonMetadataProvider metadataProvider = mock(IPokemonMetadataProvider.class);
+
+        Pokedex pokedex = new Pokedex();
+        // Configurer le mock pour retourner null lorsque getPokemonMetadata est appelé
+        when(metadataProvider.getPokemonMetadata(anyInt())).thenReturn(null);
+
+        // Appeler la méthode createPokemon et vérifier qu'une PokedexException est lancée
+        assertThrows(PokedexException.class, () -> pokedex.createPokemon(1, 100, 100, 100, 100));
+    }
 
 }
